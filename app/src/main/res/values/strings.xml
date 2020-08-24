@@ -4,4 +4,6 @@
 
     <string name="no_image_message">Please, upload an image by clicking the button at the bottom of your screen to change your hair color</string>
 
+    <string name="error_message_unknown">An error happened. It\'s not the fault of our app, YOU did something wrong, sorry</string>
+    <string name="no_image_picked">Please, select an image</string>
 </resources>
