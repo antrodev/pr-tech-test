@@ -21,14 +21,14 @@ object ApiManager {
      * @param context Context
      * @return PR service instance
      */
-    fun getPRServiceInstance(): PRService? {
+    fun getPRServiceInstance(): PRService {
         if (prServiceInstance == null) {
             val httpClient: OkHttpClient.Builder = newOkHttpClient()
             val baseUrl = "https://interview.photoroom.com/"
             val retrofit: Retrofit = newRetrofit(httpClient, baseUrl, gsonConverter)
             prServiceInstance = retrofit.create(PRService::class.java)
         }
-        return prServiceInstance
+        return prServiceInstance!!
     }
 
     private fun newOkHttpClient(): OkHttpClient.Builder {
@@ -61,7 +61,7 @@ object ApiManager {
     }
 
     private val gsonConverter: GsonConverterFactory?
-        private get() {
+        get() {
             if (gsonConverterFactory == null) {
                 val gson: Gson = getGson()
                 gsonConverterFactory = GsonConverterFactory.create(gson)

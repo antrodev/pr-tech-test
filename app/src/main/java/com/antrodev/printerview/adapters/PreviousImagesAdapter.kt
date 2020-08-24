@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.antrodev.printerview.R
 import com.antrodev.printerview.helper.ImageHelper
 
+/*
+This adapter is used to show the previous pinkerized images
+ */
 class PreviousImagesAdapter(var previousImages: ArrayList<String>) :
     RecyclerView.Adapter<PreviousImagesAdapter.ViewHolder>() {
 

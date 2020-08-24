@@ -79,10 +79,10 @@ class HairPinkererActivity : AppCompatActivity() {
         updateHistory()
 
         ApiManager.getPRServiceInstance()
-            ?.performHairRequest(HairRequest(input))
-            ?.subscribeOn(Schedulers.io())
-            ?.observeOn(AndroidSchedulers.mainThread())
-            ?.subscribe {
+            .performHairRequest(HairRequest(input))
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
                 progressBar.visibility = View.GONE
                 ImageHelper.convertBase64ToBitmap(it.image)
                 findViewById<ImageView>(R.id.image_pinkified).setImageBitmap(
