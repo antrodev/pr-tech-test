@@ -1,4 +1,4 @@
-package com.antrodev.pr_interview.network
+package com.antrodev.printerview.network
 
 import okhttp3.Interceptor
 import okhttp3.Request

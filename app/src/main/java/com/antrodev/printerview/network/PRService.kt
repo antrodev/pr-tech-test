@@ -1,7 +1,7 @@
-package com.antrodev.pr_interview.network
+package com.antrodev.printerview.network
 
-import com.antrodev.pr_interview.model.HairRequest
-import com.antrodev.pr_interview.model.HairResponse
+import com.antrodev.printerview.model.HairRequest
+import com.antrodev.printerview.model.HairResponse
 import retrofit2.http.Body
 import retrofit2.http.POST
 import rx.Observable

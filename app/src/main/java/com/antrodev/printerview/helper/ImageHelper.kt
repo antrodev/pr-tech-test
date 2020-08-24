@@ -1,4 +1,4 @@
-package com.antrodev.pr_interview.helper
+package com.antrodev.printerview.helper
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory

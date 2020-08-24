@@ -1,11 +1,10 @@
-package com.antrodev.pr_interview
+package com.antrodev.printerview
 
 
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Matrix
 import android.os.Bundle
 import android.util.Base64
 import android.view.View
@@ -16,10 +15,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.antrodev.pr_interview.adapters.PreviousImagesAdapter
-import com.antrodev.pr_interview.helper.ImageHelper
-import com.antrodev.pr_interview.model.HairRequest
-import com.antrodev.pr_interview.network.ApiManager
+import com.antrodev.printerview.adapters.PreviousImagesAdapter
+import com.antrodev.printerview.helper.ImageHelper
+import com.antrodev.printerview.model.HairRequest
+import com.antrodev.printerview.network.ApiManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers

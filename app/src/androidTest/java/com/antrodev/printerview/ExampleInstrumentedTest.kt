@@ -1,4 +1,4 @@
-package com.antrodev.pr_interview
+package com.antrodev.printerview
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

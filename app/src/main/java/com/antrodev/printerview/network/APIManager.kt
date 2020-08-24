@@ -1,7 +1,6 @@
-package com.antrodev.pr_interview.network
+package com.antrodev.printerview.network
 
-import android.content.Context
-import com.antrodev.pr_interview.BuildConfig
+import com.antrodev.printerview.BuildConfig
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient

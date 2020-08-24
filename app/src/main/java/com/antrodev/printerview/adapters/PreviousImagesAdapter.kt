@@ -1,11 +1,11 @@
-package com.antrodev.pr_interview.adapters
+package com.antrodev.printerview.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.antrodev.pr_interview.R
-import com.antrodev.pr_interview.helper.ImageHelper
+import com.antrodev.printerview.R
+import com.antrodev.printerview.helper.ImageHelper
 
 class PreviousImagesAdapter(var previousImages: ArrayList<String>) :
     RecyclerView.Adapter<PreviousImagesAdapter.ViewHolder>() {

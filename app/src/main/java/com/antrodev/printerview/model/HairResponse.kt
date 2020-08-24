@@ -1,10 +1,10 @@
-package com.antrodev.pr_interview.model
+package com.antrodev.printerview.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class HairRequest(
+data class HairResponse(
     @Expose
-    @SerializedName("b64_img")
+    @SerializedName("b64_output")
     var image: String
 )

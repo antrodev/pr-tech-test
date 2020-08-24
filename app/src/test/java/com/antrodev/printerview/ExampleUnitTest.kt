@@ -1,4 +1,4 @@
-package com.antrodev.pr_interview
+package com.antrodev.printerview
 
 import org.junit.Test
 
