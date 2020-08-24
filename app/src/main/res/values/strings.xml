@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Pinkonator</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="no_image_message">Please, upload an image by clicking the button at the bottom of your screen to change your hair color</string>
+
+</resources>
