@@ -1,21 +1,22 @@
 package com.antrodev.pr_interview
 
 
-import android.util.Base64
 import android.app.Activity
 import android.content.Intent
-import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.net.Uri
+import android.graphics.Matrix
 import android.os.Bundle
-import android.provider.MediaStore
+import android.util.Base64
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.antrodev.pr_interview.adapters.PreviousImagesAdapter
 import com.antrodev.pr_interview.helper.ImageHelper
 import com.antrodev.pr_interview.model.HairRequest
 import com.antrodev.pr_interview.network.ApiManager
@@ -33,6 +34,12 @@ class HairPinkererActivity : AppCompatActivity() {
 
     private lateinit var progressBar: ProgressBar
     private lateinit var noImageText: TextView
+    private lateinit var recyclerView: RecyclerView
+
+    private lateinit var viewAdapter: PreviousImagesAdapter
+    private lateinit var viewManager: RecyclerView.LayoutManager
+
+    private var previousImages: ArrayList<String> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +47,15 @@ class HairPinkererActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
         progressBar = findViewById(R.id.progress_bar)
         noImageText = findViewById(R.id.no_image_text)
+
+        recyclerView = findViewById(R.id.recycler_view)
+
+        viewManager = LinearLayoutManager(this)
+        viewAdapter = PreviousImagesAdapter(previousImages)
+
+        recyclerView.adapter = viewAdapter
+        recyclerView.layoutManager = viewManager
+        recyclerView.setHasFixedSize(true)
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { _ ->
             startPhotoGallery()
@@ -60,6 +76,9 @@ class HairPinkererActivity : AppCompatActivity() {
      * Set directly the image to the ImageView
      */
     private fun pinkifyImage(input: String) {
+        previousImages.add(input)
+        updateHistory()
+
         ApiManager.getPRServiceInstance()
             ?.performHairRequest(HairRequest(input))
             ?.subscribeOn(Schedulers.io())
@@ -71,6 +90,11 @@ class HairPinkererActivity : AppCompatActivity() {
                     ImageHelper.convertBase64ToBitmap(it.image)
                 )
             }
+    }
+
+    private fun updateHistory() {
+        viewAdapter.previousImages = previousImages
+        viewAdapter.notifyDataSetChanged()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
