@@ -5,4 +5,6 @@
 
     <string name="error_message_unknown">An error happened. It\'s not the fault of our app, YOU did something wrong, sorry</string>
     <string name="no_image_picked">Please, select an image</string>
+
+    <string name="error_image_response">There is a problem somewhere, maybe try with a smaller image?</string>
 </resources>

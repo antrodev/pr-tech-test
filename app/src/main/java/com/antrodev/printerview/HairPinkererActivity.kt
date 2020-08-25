@@ -75,23 +75,31 @@ class HairPinkererActivity : AppCompatActivity() {
      * Set directly the image to the ImageView
      */
     private fun pinkifyImage(input: String) {
-        previousImages.add(input)
-        updateHistory()
+        updateHistory(input)
 
         ApiManager.getPRServiceInstance()
             .performHairRequest(HairRequest(input))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
+            .subscribe({ hairResponse ->
                 progressBar.visibility = View.GONE
-                ImageHelper.convertBase64ToBitmap(it.image)
+                ImageHelper.convertBase64ToBitmap(hairResponse.image)
                 findViewById<ImageView>(R.id.image_pinkified).setImageBitmap(
-                    ImageHelper.convertBase64ToBitmap(it.image)
+                    ImageHelper.convertBase64ToBitmap(hairResponse.image)
                 )
-            }
+            }, { error ->
+                Toast.makeText(
+                    baseContext,
+                    "${getString(R.string.error_image_response)} - ${error.localizedMessage}",
+                    Toast.LENGTH_LONG
+                ).show()
+                progressBar.visibility = View.GONE
+                noImageText.visibility = View.VISIBLE
+            })
     }
 
-    private fun updateHistory() {
+    private fun updateHistory(input: String) {
+        previousImages.add(input)
         viewAdapter.previousImages = previousImages
         viewAdapter.notifyDataSetChanged()
     }
@@ -111,6 +119,7 @@ class HairPinkererActivity : AppCompatActivity() {
                 val imageInByte: ByteArray = stream.toByteArray()
 
                 pinkifyImage(Base64.encodeToString(imageInByte, Base64.DEFAULT))
+
             } catch (e: FileNotFoundException) {
                 e.printStackTrace()
                 Toast.makeText(this, getString(R.string.error_message_unknown), Toast.LENGTH_LONG)
