@@ -12,6 +12,7 @@ class ApiInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val originRequest: Request = chain.request()
         val requestWithUserAgent: Request = originRequest.newBuilder()
+            .header("Content-Type", "application/json")
             .build()
         return chain.proceed(requestWithUserAgent)
     }
